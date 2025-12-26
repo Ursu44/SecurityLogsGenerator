@@ -1,0 +1,44 @@
+import random
+
+import random
+
+def random_file_path():
+    paths = [
+        "/var/log/syslog",
+        "/etc/hosts",
+        "/usr/bin/python3",
+        "/home/user1/.bashrc",
+        "/opt/app/config.yaml",
+        "/tmp/update.sh",
+        "/tmp/.x",
+        "/var/tmp/malware.bin",
+        "/dev/shm/payload",
+        "/root/.ssh/authorized_keys",
+        "C:\\Windows\\System32\\notepad.exe",
+        "C:\\Program Files\\App\\app.exe",
+        "C:\\Users\\user1\\Documents\\report.docx",
+        "C:\\Temp\\payload.exe",
+        "C:\\Users\\Public\\svchost.exe",
+        "C:\\Windows\\Temp\\dropper.exe",
+        "C:\\Windows\\System32\\svchost.exe"
+    ]
+
+    return random.choice(paths)
+
+
+def random_user():
+    return random.choice(["root", "admin", "user1", "user2", "guest", "backup"])
+
+def random_ip():
+
+    private_ranges = [
+        lambda: f"172.{random.randint(16,27)}.{random.randint(0,25)}.{random.randint(1,25)}",
+        lambda: f"192.168.{random.randint(0,25)}.{random.randint(1,25)}"
+    ]
+
+    public_ranges = [
+        lambda: f"31.{random.randint(0,25)}.{random.randint(0,25)}.{random.randint(0,25)}",
+        lambda: f"52.{random.randint(0,25)}.{random.randint(0,25)}.{random.randint(0,25)}"
+    ]
+
+    return random.choice(private_ranges + public_ranges)()
